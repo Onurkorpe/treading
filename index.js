@@ -5,7 +5,7 @@ const app = express();
 const fs = require('fs');
 
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'https://treadingreact.onrender.com/'
 }));
 
 app.get('/', function (req, res) {
