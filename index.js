@@ -5,7 +5,7 @@ const app = express();
 const fs = require('fs');
 
 app.use(cors({
-  origin: 'https://treadingreact.onrender.com/'
+  origin: 'https://treadingreact.onrender.com'
 }));
 
 app.get('/', function (req, res) {
