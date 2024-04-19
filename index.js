@@ -11,7 +11,7 @@ var jsonParser = bodyParser.json();
 app.use(jsonParser);
 app.use(urlencodedParser);
 app.use(cors({
-  origin: 'https://treadingreact.onrender.com'
+  origin: ['https://treadingreact.onrender.com','http://localhost:5173']
 }));
 
 
