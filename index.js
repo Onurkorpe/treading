@@ -1,25 +1,23 @@
 'use strict';
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const app = express();
 const fs = require('fs');
+const updateStatus = require('./updateStatu');
 
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var jsonParser = bodyParser.json();
+app.use(jsonParser);
+app.use(urlencodedParser);
 app.use(cors({
   origin: 'https://treadingreact.onrender.com'
 }));
 
-app.get('/', function (req, res) {
 
-    res.send('Hemen al');
-    console.log('istek geldi');
+app.post("/updateStatus",jsonParser,updateStatus);
 
-});
 
-app.post('/', function (req, res) {
-  res.send('Hemen al');
-   console.log('istek geldi');
-
-});
 
 app.get('/api/textfile', (req, res) => {
   fs.readFile('status.txt', 'utf8', (err, data) => {
