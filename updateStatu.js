@@ -8,7 +8,7 @@ const updateStatus = async function (req, res) {
             console.error(err);
             return;
         }
-        console.log(req)
+        console.log(req.query)
         let jsonData = JSON.parse(data);
         let keyData = req.query.time;
 
