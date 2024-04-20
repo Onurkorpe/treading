@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const updateStatus = async function (req, res) {
     
-   
+   Console.log(req);
     fs.readFile('status.txt', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
