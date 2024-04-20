@@ -10,9 +10,9 @@ const updateStatus = async function (req, res) {
         }
         console.log(req.body)
         let jsonData = JSON.parse(data);
-        let keyData = req.query.time;
+        let keyData = req.body.time;
 
-       jsonData.data.name1[keyData]=req.query.value;
+       jsonData.data.name1[keyData]=req.body.value;
         
         fs.writeFile('status.txt', JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
             if (err) {
