@@ -29,6 +29,13 @@ app.get('/api/textfile', (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+ 
+  
+    res.send('Başarılı');
+ 
+});
+
 app.listen(80, function () {
   console.log('Sunucu çalışıyor...');
 });
