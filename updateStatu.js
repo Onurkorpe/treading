@@ -12,9 +12,14 @@ const updateStatus = async function (req, res) {
          let jsonData = JSON.parse(data);
          let coin = req.body.coin;
          let time = req.body.time;
-         let value = req.body.value;
+         let statu = req.body.statu;
+         let amount = req.body.amount;
+         let createDate = req.body.createDate;
 
-        jsonData.data[coin][time]=value;
+        jsonData.data[coin].time=time;
+        jsonData.data[coin].statu=statu;
+        jsonData.data[coin].amount=amount;
+        jsonData.data[coin].createDate=createDate;
       
          fs.writeFile('status.txt', JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
              if (err) {
