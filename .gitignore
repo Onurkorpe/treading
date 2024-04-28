@@ -1,0 +1,5 @@
+# .env dosyasını yükleme
+.env
+
+# Node modules klasörünü yükleme
+node_modules/

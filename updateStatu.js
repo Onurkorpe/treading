@@ -1,7 +1,9 @@
 const fs = require('fs');
+const getData = require('./api/GetData');
+
 
 const updateStatus = async function (req, res) {
-    
+    getData(req.body.statu);
 
     fs.readFile('status.txt', 'utf8', (err, data) => {
         if (err) {
