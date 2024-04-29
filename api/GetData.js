@@ -21,6 +21,9 @@ const getData = async function getFuturesBalance(process,coin) {
       availableBalance = (availableBalance / 100) * balancePercent;
       console.log('bakiye: ' + availableBalance);
       
+      const lastPrice = await binance.prices(symbol);
+      console.log(`${symbol} son fiyatı: ${lastPrice[symbol]}`);
+
       resolve(availableBalance);
     } catch (error) {
       reject(error);
