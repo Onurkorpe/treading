@@ -9,24 +9,43 @@ const binance = new Binance().options({
 });
 
 const getData = async function getFuturesBalance(process,coin) {
-  const symbol = coin;
-  console.log(`${symbol}coin `)
-  const balancePercent = 10;
-  const getBalance = await binance.futuresBalance();
- 
-  let availableBalance = getBalance[6].availableBalance;
-  availableBalance = (availableBalance / 100) * balancePercent;
-  console.log('bakiye: ' + availableBalance);
-  
-try {
-  
-  const lastPrice = await binance.prices(symbol);
 
-  console.log(`${symbol} son fiyatı: ${lastPrice[symbol]}`);
-} catch (error) {
-  console.log("hata " + error)
+  return new Promise(async (resolve, reject) => {
+    try {
+      const symbol = coin;
+      console.log(`${symbol}coin `);
+      const balancePercent = 10;
+      const getBalance = await binance.futuresBalance();
+      
+      let availableBalance = getBalance[6].availableBalance;
+      availableBalance = (availableBalance / 100) * balancePercent;
+      console.log('bakiye: ' + availableBalance);
+      
+      resolve(availableBalance);
+    } catch (error) {
+      reject(error);
+    }
+  });
+
+  // const symbol = coin;
+  // console.log(`${symbol}coin `)
+  // const balancePercent = 10;
+  // const getBalance = await binance.futuresBalance();
+ 
+  // let availableBalance = getBalance[6].availableBalance;
+  // availableBalance = (availableBalance / 100) * balancePercent;
+  // console.log('bakiye: ' + availableBalance);
   
-}
+
+// try {
+  
+//   const lastPrice = await binance.prices(symbol);
+
+//   console.log(`${symbol} son fiyatı: ${lastPrice[symbol]}`);
+// } catch (error) {
+//   console.log("hata " + error)
+  
+// }
 
 
 
