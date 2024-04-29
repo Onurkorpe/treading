@@ -8,64 +8,28 @@ const binance = new Binance().options({
   verbose: true,
 });
 
-const getData = async function getFuturesBalance(process,coin) {
+async function getData(coin, balancePercent = 10) { // Varsayılan veya argüman kullan
+  try {
+    const symbol = coin;
+    console.log(`${symbol}coin`);
 
-  return new Promise(async (resolve, reject) => {
-    try {
-      const symbol = coin;
-      console.log(`${symbol}coin `);
-      const balancePercent = 10;
-      const getBalance = await binance.futuresBalance();
-      
-      let availableBalance = getBalance[6].availableBalance;
-      availableBalance = (availableBalance / 100) * balancePercent;
-      console.log('bakiye: ' + availableBalance);
-      
-      const lastPrice = await binance.prices(symbol);
-      console.log(`${symbol} son fiyatı: ${lastPrice[symbol]}`);
+    const getBalance = await binance.futuresBalance();
+    const availableBalance = (getBalance[6].availableBalance / 100) * balancePercent;
+    console.log('bakiye: ' + availableBalance);
 
-      resolve(availableBalance,lastPrice);
-    } catch (error) {
-      reject(error);
+    const lastPrice = await binance.prices(symbol);
+    console.log(`${symbol} son fiyatı: ${lastPrice[symbol]}`);
+
+    return { availableBalance, lastPrice }; // Veri için nesne döndür
+
+  } catch (error) {
+    if (error.name === 'BinanceError') {
+      console.error(`Binance API hatası: ${error.message}`);
+    } else {
+      console.error(`Hata: ${error}`);
     }
-  });
-
-  // const symbol = coin;
-  // console.log(`${symbol}coin `)
-  // const balancePercent = 10;
-  // const getBalance = await binance.futuresBalance();
- 
-  // let availableBalance = getBalance[6].availableBalance;
-  // availableBalance = (availableBalance / 100) * balancePercent;
-  // console.log('bakiye: ' + availableBalance);
-  
-
-// try {
-  
-//   const lastPrice = await binance.prices(symbol);
-
-//   console.log(`${symbol} son fiyatı: ${lastPrice[symbol]}`);
-// } catch (error) {
-//   console.log("hata " + error)
-  
-// }
-
-
-
-  // let quantity = (availableBalance / lastPrice[symbol]) * 10;
-  // quantity = quantity.toFixed(0);
-  // console.log(quantity);
-
-  // if (process === 'buy') {
-  //   const response = await binance.futuresMarketBuy(symbol, quantity);
-  //   console.info(response);
-  // } else if (process === 'sell') {
-  //   const response = await binance.futuresMarketSell(symbol, quantity);
-  //   console.info(response);
-  // } else {
-  //   console.error('Geçersiz işlem tipi');
-  // }
-
-};
+    throw error; // Daha fazla işleme için tekrar at (isteğe bağlı)
+  }
+}
 
 module.exports = getData;
