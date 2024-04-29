@@ -10,8 +10,8 @@ const binance = new Binance().options({
 
 const getData = async function getFuturesBalance(process,coin) {
 
-  return new Promise(async (resolve, reject) => {
-    try {
+  // return new Promise(async (resolve, reject) => {
+  //   try {
       // const symbol = coin;
       //  console.log(`${symbol}coin `);
       //  const balancePercent = 10;
@@ -21,14 +21,26 @@ const getData = async function getFuturesBalance(process,coin) {
       // availableBalance = (availableBalance / 100) * balancePercent;
       // console.log('bakiye: ' + availableBalance);
       
-      const lastPrice = await binance.prices('PEPEUSDT');
-      console.log(`son fiyatı: ${lastPrice.PEPEUSDT}`);
+    
+   
 
-      resolve(lastPrice);
-    } catch (error) {
-      reject(error);
-    }
-  });
+      return new Promise((resolve, reject) => {
+        binance.prices('CKBUSDT', (error, lastPrice) => {
+          if (error) {
+            // Hata durumunda Promise'i reddet
+            reject(error);
+          } else {
+            console.log(`son fiyatı: ${lastPrice.CKBUSDT}`);
+            resolve(lastPrice);
+          }
+        });
+      });
+
+  //     resolve(lastPrice);
+  //   } catch (error) {
+  //     reject(error);
+  //   }
+  // });
 
   // const symbol = coin;
   // console.log(`${symbol}coin `)
