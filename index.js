@@ -26,7 +26,7 @@ app.post("/updateStatus",jsonParser,updateStatus);
 app.get('/api/textfile', (req, res) => {
   fs.readFile('status.txt', 'utf8', (err, data) => {
     if (err) {
-      res.status(500).send('Dosya okunamadı.');
+      res.status(500).send('Dosya okunamadı.' + err);
       return;
     }
     res.send(data);
