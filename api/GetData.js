@@ -24,7 +24,7 @@ const getData = async function getFuturesBalance(process,coin) {
       const lastPrice = await binance.prices(symbol);
       console.log(`${symbol} son fiyatı: ${lastPrice[symbol]}`);
 
-      resolve(availableBalance);
+      resolve(availableBalance,lastPrice);
     } catch (error) {
       reject(error);
     }
