@@ -22,19 +22,30 @@ const getData = async function getFuturesBalance(process,coin) {
       // console.log('bakiye: ' + availableBalance);
       
     
+      const getLatestPrice = (symbol) => {
+        return new Promise((resolve, reject) => {
+          binance.prices(symbol, (error, ticker) => {
+            if (error) {
+              reject(error);
+            } else {
+              const lastPrice = ticker[symbol];
+              console.log(`Son fiyat: ${lastPrice}`);
+              resolve(lastPrice);
+            }
+          });
+        });
+      };
+
+
+      getLatestPrice('CKBUSDT')
+  .then(price => console.log('CKBUSDT son fiyatı:', price))
+  .catch(error => console.error('Hata:', error));
    
 
-      return new Promise((resolve, reject) => {
-        binance.prices('CKBUSDT', (error, lastPrice) => {
-          if (error) {
-            // Hata durumunda Promise'i reddet
-            reject(error);
-          } else {
-            console.log(`son fiyatı: ${lastPrice.CKBUSDT}`);
-            resolve(lastPrice);
-          }
-        });
-      });
+
+
+
+     
 
   //     resolve(lastPrice);
   //   } catch (error) {
