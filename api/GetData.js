@@ -1,15 +1,16 @@
-const Binance = require('binance-api-node').default
+const Binance = require('node-binance-api');
 require("dotenv").config();
 
-const client = Binance({
-  apiKey: process.env.API_KEY,
-  apiSecret: process.env.API_SECRET
+const binance = new Binance().options({
+  APIKEY: process.env.API_KEY,
+  APISECRET: process.env.API_SECRET
 });
 
 const getData = async function getFuturesBalance(process, coin) {
 
 try {
-  console.log(await client.futuresBook({ symbol: 'CKBUSDT' }))
+  const data = await binance.futuresBalance();
+  console.info(data[6].availableBalance  );
 } catch (error) {
   console.log(error)
 }
