@@ -13,7 +13,7 @@ const getData = async function getFuturesBalance(process, coin) {
   
 try {
   const data = await binance.futuresBalance();
-  console.info(data );
+  console.info(data[6].availableBalance );
 } catch (error) {
   console.log(error)
 }
