@@ -7,10 +7,7 @@
       "createDate": "26.04.2024 08:00"
     },
     "XRPUSDT": {
-      "statu": "",
-      "time": "",
-      "amount": "",
-      "createDate": ""
+      "time": "dk30"
     },
     "CKBUSDT": {
       "statu": "buy",
