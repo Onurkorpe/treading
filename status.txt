@@ -1,10 +1,10 @@
 {
   "data": {
     "PEPEUSDT": {
-      "statu": "buy",
-      "time": "30dk",
-      "amount": "0.55",
-      "createDate": "26.04.2024 08:00"
+      "statu": "sell",
+      "time": "dk15",
+      "amount": "0.30",
+      "createDate": "26.04.2024 09:00"
     },
     "XRPUSDT": {
       "statu": "",
