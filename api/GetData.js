@@ -9,11 +9,7 @@ const client = Binance({
 const getData = async function getFuturesBalance(process, coin) {
 
 try {
-  console.log(
-    await client.allOrders({
-      symbol: 'ETHBTC',
-    }),
-  )
+  console.log(await client.futuresBook({ symbol: 'CKBUSDT' }))
 } catch (error) {
   console.log(error)
 }
