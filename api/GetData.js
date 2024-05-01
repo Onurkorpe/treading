@@ -9,7 +9,11 @@ const binance = new Binance().options({
 const getData = async function getFuturesBalance(process, coin,amount) {
   try {
     console.log(amount);
+    if (coin === 'PEPEUSDT') {
+      coin = '1000PEPEUSDT';
+    }
     const symbol = coin;
+    
     console.log(`${symbol}coin `);
     const balancePercent = 30;
     const getBalance = await binance.futuresBalance();
