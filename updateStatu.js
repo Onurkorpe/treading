@@ -3,7 +3,8 @@ const getData = require('./api/GetData');
 
 
 const updateStatus = async function (req, res) {
-    getData(req.body.statu,req.body.coin);
+    console.log(req.body.amount);
+    getData(req.body.statu,req.body.coin,req.body.amount);
 
     fs.readFile('status.txt', 'utf8', (err, data) => {
         if (err) {
