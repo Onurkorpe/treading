@@ -10,9 +10,9 @@
       "time": "dk30"
     },
     "CKBUSDT": {
-      "statu": "buy",
-      "time": "dk15",
-      "amount": "0.03",
+      "statu": "sell",
+      "time": "dk30",
+      "amount": "0.01",
       "createDate": "28.04.2024 18:10"
     }
   }
