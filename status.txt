@@ -3,7 +3,7 @@
     "PEPEUSDT": {
       "statu": "buy",
       "time": "dk30",
-      "amount": "0.01438",
+      "amount": "0.00000622",
       "createDate": "28.04.2024 18:10"
     },
     "XRPUSDT": {

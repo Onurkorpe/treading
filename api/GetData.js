@@ -11,21 +11,23 @@ const getData = async function getFuturesBalance(process, coin,amount) {
     console.log(amount);
     if (coin === 'PEPEUSDT') {
       coin = '1000PEPEUSDT';
+      amount = amount *1000;
     }
     const symbol = coin;
     
-    console.log(`${symbol}coin `);
+    console.log(`coin ${symbol} `);
     const balancePercent = 30;
     const getBalance = await binance.futuresBalance();
     let availableBalance = getBalance[6].availableBalance;
     availableBalance = (availableBalance / 100) * balancePercent;
+    availableBalance = availableBalance.toFixed(2);
     console.log("bakiye: " + availableBalance);
 
      const lastPrice = amount;
      console.log(`${symbol} son fiyatı: ${lastPrice}`);
      let quantity = (availableBalance / lastPrice) * 10;
      quantity = quantity.toFixed(0);
-     console.log(quantity);
+     console.log("miktar " +quantity);
 
     if (process === "buy") {
       const response = await binance.futuresMarketBuy(symbol, quantity);
