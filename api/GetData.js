@@ -43,6 +43,7 @@ const getData = async function getFuturesBalance(process, coin,amount) {
      } else {
        console.error("Geçersiz işlem tipi");
      }
+     
   } catch (error) {
     console.log(error);
   }
