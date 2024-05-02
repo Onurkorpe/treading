@@ -34,15 +34,15 @@ const getData = async function getFuturesBalance(process, coin,amount) {
      quantity = quantity.toFixed(0);
      console.log("miktar " +quantity);
 
-    // if (process === "buy") {
-    //   const response = await binance.futuresMarketBuy(symbol, quantity);
-    //   console.info(response);
-    // } else if (process === "sell") {
-    //    const response = await binance.futuresMarketSell(symbol, quantity);
-    //    console.info(response);
-    //  } else {
-    //    console.error("Geçersiz işlem tipi");
-    //  }
+     if (process === "buy") {
+       const response = await binance.futuresMarketBuy(symbol, quantity);
+       console.info(response);
+     } else if (process === "sell") {
+        const response = await binance.futuresMarketSell(symbol, quantity);
+        console.info(response);
+      } else {
+        console.error("Geçersiz işlem tipi");
+     }
      
   } catch (error) {
     console.log(error);
