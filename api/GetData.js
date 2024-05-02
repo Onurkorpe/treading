@@ -18,31 +18,31 @@ const getData = async function getFuturesBalance(process, coin,amount) {
     const symbol = coin;
     
     console.log(`coin ${symbol} `);
-    console.info( await binance.futuresCancelAll( symbol) );
-
 
     const balancePercent = 50;
     const getBalance = await binance.futuresBalance();
-    let availableBalance = getBalance[6].availableBalance;
-    availableBalance = (availableBalance / 100) * balancePercent;
-    availableBalance = availableBalance.toFixed(2);
-    console.log("bakiye: " + availableBalance);
-
+    let crossWalletBalance = getBalance[6].crossWalletBalance;
+    crossWalletBalance = (crossWalletBalance / 100) * balancePercent;
+    crossWalletBalance = crossWalletBalance.toFixed(2);
+      console.log(await binance.futuresBalance());
+      console.log('bakiye: ' + crossWalletBalance);
+      
+      
      const lastPrice = amount;
      console.log(`${symbol} son fiyatı: ${lastPrice}`);
-     let quantity = (availableBalance / lastPrice) * 10;
+     let quantity = (crossWalletBalance / lastPrice) * 10;
      quantity = quantity.toFixed(0);
      console.log("miktar " +quantity);
 
-     if (process === "buy") {
-       const response = await binance.futuresMarketBuy(symbol, quantity);
-       console.info(response);
-     } else if (process === "sell") {
-        const response = await binance.futuresMarketSell(symbol, quantity);
+      if (process === "buy") {
+        const response = await binance.futuresMarketBuy(symbol, quantity);
         console.info(response);
-      } else {
-        console.error("Geçersiz işlem tipi");
-     }
+      } else if (process === "sell") {
+         const response = await binance.futuresMarketSell(symbol, quantity);
+         console.info(response);
+       } else {
+         console.error("Geçersiz işlem tipi");
+      }
      
   } catch (error) {
     console.log(error);
