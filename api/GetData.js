@@ -17,7 +17,7 @@ const getData = async function getFuturesBalance(process, coin, amount) {
 
     console.log(`coin ${symbol} `);
 
-    const balancePercent = 25;
+    const balancePercent = 30;
     const getBalance = await binance.futuresBalance();
     const positions = await binance.futuresPositionRisk();
     for (const position of positions) {
@@ -40,7 +40,7 @@ const getData = async function getFuturesBalance(process, coin, amount) {
 
     const lastPrice = amount;
     console.log(`${symbol} son fiyatı: ${lastPrice}`);
-    const quantity = ((fixedBalance / lastPrice) * 10).toFixed(0);
+    const quantity = ((fixedBalance / lastPrice) * 30).toFixed(0);
     console.log("miktar " + quantity);
 
     if (process === "buy") {
