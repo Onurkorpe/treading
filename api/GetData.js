@@ -21,20 +21,22 @@ const getData = async function getFuturesBalance(process, coin, amount) {
     const getBalance = await binance.futuresBalance();
     const positions = await binance.futuresPositionRisk();
     for (const position of positions) {
-      if (parseFloat(position.positionAmt) > 0) {
-        await binance.futuresMarketSell(
-          position.symbol,
-          Math.abs(parseFloat(position.positionAmt))
-        );
-      } else if (parseFloat(position.positionAmt) < 0) {
-        await binance.futuresMarketBuy(
-          position.symbol,
-          Math.abs(parseFloat(position.positionAmt))
-        );
+      if (position.symbol === symbol) {
+        if (parseFloat(position.positionAmt) > 0) {
+          await binance.futuresMarketSell(
+            position.symbol,
+            Math.abs(parseFloat(position.positionAmt))
+          );
+        } else if (parseFloat(position.positionAmt) < 0) {
+          await binance.futuresMarketBuy(
+            position.symbol,
+            Math.abs(parseFloat(position.positionAmt))
+          );
+        }
+
+        console.log("Tüm pozisyonlar kapatıldı.");
       }
     }
-    console.log("Tüm pozisyonlar kapatıldı.");
-
     const balance = getBalance[6].balance;
     const fixedBalance = (balance / 100) * balancePercent.toFixed(2);
 
