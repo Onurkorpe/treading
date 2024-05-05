@@ -17,7 +17,7 @@ const getData = async function getFuturesBalance(process, coin, amount) {
 
     console.log(`coin ${symbol} `);
 
-    const balancePercent = 50;
+    const balancePercent = 25;
     const getBalance = await binance.futuresBalance();
     const positions = await binance.futuresPositionRisk();
     for (const position of positions) {
