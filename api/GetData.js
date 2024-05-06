@@ -40,10 +40,10 @@ const getData = async function getFuturesBalance(process, coin, amount) {
     console.log("Tüm pozisyonlar kapatıldı.");
     const balance = getBalance[6].balance;
     const fixedBalance = (balance / 100) * balancePercent.toFixed(2);
-
+    console.log(fixedBalance);
     const lastPrice = amount;
     console.log(`${symbol} son fiyatı: ${lastPrice}`);
-    const quantity = ((fixedBalance / lastPrice) * 30).toFixed(0);
+    const quantity = ((fixedBalance / lastPrice) * 10).toFixed(0);
     console.log("miktar " + quantity);
 
     if (process === "buy") {
