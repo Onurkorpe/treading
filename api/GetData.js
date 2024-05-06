@@ -34,9 +34,10 @@ const getData = async function getFuturesBalance(process, coin, amount) {
           );
         }
 
-        console.log("Tüm pozisyonlar kapatıldı.");
+        
       
     }
+    console.log("Tüm pozisyonlar kapatıldı.");
     const balance = getBalance[6].balance;
     const fixedBalance = (balance / 100) * balancePercent.toFixed(2);
 
